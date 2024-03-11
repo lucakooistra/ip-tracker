@@ -1,3 +1,27 @@
+.iptracker {
+  &__background {
+    background-image: url(../images/pattern-bg-desktop.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 20rem;
+    width: 100%;
+
+  }
+
+  &__container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__title {
+    margin: 0;
+    color: white;
+  }
+}
 .leaflet-container {
   height: 30rem;
 }
