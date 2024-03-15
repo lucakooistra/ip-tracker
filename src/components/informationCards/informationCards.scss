@@ -1,0 +1,46 @@
+.information-cards {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 30%;
+  background-color: transparent;
+
+  &__card {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    background-color: white;
+    width: 45rem;
+    padding: 20px;
+    border-radius: 10px;
+    height: 200px;
+    z-index: 999;
+
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      height: 80%;
+      justify-content: flex-start;
+      gap: 20px;
+      margin: 20px 0;
+      padding: 0 20px;
+      border-right: 1px solid lightgray;
+
+      &:last-of-type {
+        border-right: none;
+      }
+    }
+  }
+
+  &__title {
+    text-transform: uppercase;
+    color: gray;
+    font-size: 12px;
+    margin: 0;
+  }
+
+  &__text {
+    font-weight: bold;
+    margin: 0;
+  }
+}

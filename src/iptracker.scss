@@ -1,10 +1,13 @@
 .iptracker {
+  height: 100vh;
+  overflow-y: hidden;
+
   &__background {
     background-image: url(../images/pattern-bg-desktop.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 20rem;
+    height: 50%;
     width: 100%;
 
   }
@@ -14,7 +17,7 @@
     flex-flow: column nowrap;
     justify-content: space-around;
     align-items: center;
-    height: 100%;
+    height: 70%;
   }
 
   &__title {
@@ -23,5 +26,5 @@
   }
 }
 .leaflet-container {
-  height: 30rem;
+  height: 50vh;
 }
