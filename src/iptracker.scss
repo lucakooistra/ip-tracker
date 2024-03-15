@@ -7,7 +7,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 30%;
+    height: 50%;
     width: 100%;
 
   }
@@ -17,7 +17,7 @@
     flex-flow: column nowrap;
     justify-content: space-around;
     align-items: center;
-    height: 100%;
+    height: 70%;
   }
 
   &__title {
@@ -26,5 +26,5 @@
   }
 }
 .leaflet-container {
-  height: 70vh;
+  height: 50vh;
 }

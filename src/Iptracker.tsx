@@ -2,6 +2,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import "./iptracker.scss";
 import { MapTile } from "./components/maptile/MapTile";
 import { IpForm } from "./components/ipform/IpForm";
+import { InformationCards } from "./components/informationCards/InformationCards";
 import queryString from "query-string";
 
 type ApiDataResponse = {
@@ -33,12 +34,35 @@ function Iptracker() {
     url: "https://geo.ipify.org/api/v2/country,city",
     query: {
       apiKey: "at_gwoGhWGCqBr8iCsX4zoW9fYSL6kIm",
-      ipAddress: ipAddressInput,
+      domain: ipAddressInput,
     },
   });
 
   const latData = data?.location.lat;
   const lngData = data?.location.lng;
+  const ipAddressData = data?.ip;
+
+  const locationCityData = data?.location.city;
+  const locationRegionData = data?.location.region;
+  const locationPostalCodeData = data?.location.postalCode;
+  const timezoneData = data?.location.timezone;
+  const nameData = data?.as.name;
+
+  function makeALocationString() {
+    if (locationCityData && locationRegionData && locationPostalCodeData) {
+      return (
+        locationCityData +
+        ", " +
+        locationRegionData +
+        ", " +
+        locationPostalCodeData
+      );
+    } else if (locationCityData && locationRegionData) {
+      return locationCityData + ", " + locationRegionData;
+    } else {
+      return "search for a location";
+    }
+  }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setIpAddressInput(event.target.value);
@@ -50,7 +74,7 @@ function Iptracker() {
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => console.error(error));
-    setIpAddressInput('');
+    setIpAddressInput("");
   }
   return (
     <div className="iptracker">
@@ -66,16 +90,14 @@ function Iptracker() {
             onSubmit={handleSubmit}
           />
         </div>
+        <InformationCards
+          ipAddressData={ipAddressData}
+          locationTotalData={makeALocationString()}
+          timezoneData={timezoneData}
+          nameData={nameData}
+        />
       </div>
-      <MapTile 
-        latData = {latData}
-        lngData = {lngData}
-      />;
-      {data ? (
-        <pre>{JSON.stringify(console.log(data))}</pre>
-      ) : (
-        "Loading..."
-      )}
+      <MapTile latData={latData} lngData={lngData} />;
     </div>
   );
 }

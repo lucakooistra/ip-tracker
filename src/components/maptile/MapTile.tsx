@@ -23,7 +23,7 @@ const RecenterAutomatically = ({ position }: positionProp) => {
 
 
 export function MapTile({ latData, lngData }: MapTileProps) {
-  let position = [51.505, -0.09];
+  let position = [37.8910825, 41.1229977,14];
   if (latData && lngData) position = [latData, lngData];
 
   return (
