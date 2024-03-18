@@ -51,6 +51,7 @@ function Iptracker() {
   function makeALocationString() {
     if (locationCityData && locationRegionData && locationPostalCodeData) {
       return (
+        // `${locationCityData}, `
         locationCityData +
         ", " +
         locationRegionData +
@@ -72,7 +73,7 @@ function Iptracker() {
     event.preventDefault();
     fetch(url)
       .then((response) => response.json())
-      .then((json) => setData(json))
+      .then((json) => {if (json.code > 400) {console.log('escaped')} else {setData(json)}})
       .catch((error) => console.error(error));
     setIpAddressInput("");
   }
@@ -80,6 +81,7 @@ function Iptracker() {
     <div className="iptracker">
       <div className="iptracker__background">
         <div className="iptracker__container">
+          <div className="iptracker__holder">
           <h1 className="iptracker__title">IP Address Tracker</h1>
           <IpForm
             type="text"
@@ -89,13 +91,14 @@ function Iptracker() {
             onChange={handleChange}
             onSubmit={handleSubmit}
           />
-        </div>
+          </div>
         <InformationCards
           ipAddressData={ipAddressData}
           locationTotalData={makeALocationString()}
           timezoneData={timezoneData}
           nameData={nameData}
         />
+        </div>
       </div>
       <MapTile latData={latData} lngData={lngData} />;
     </div>
