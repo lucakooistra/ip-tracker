@@ -1,4 +1,9 @@
 .ipform {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+
   form {
     display: flex;
     align-items: center;
@@ -16,6 +21,12 @@
     &:focus {
       outline: none;
     }
+
+    @media only screen and (max-width: 335px) {
+      &::placeholder {
+        font-size: 10px;
+      }
+    }
   }
 
   button {
@@ -25,16 +36,15 @@
     height: 100%;
     width: 4rem;
     border-radius: 0 15px 15px 0;
-    
-    span {
-        display: block;
-        background-image: url(../../../images/icon-arrow.svg);
-        background-size: 10px;
-        background-repeat: no-repeat;
-        background-position: center;
-        height: 100%;
-        width: 100%;
-    }
-}
 
+    span {
+      display: block;
+      background-image: url(../../../images/icon-arrow.svg);
+      background-size: 10px;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100%;
+      width: 100%;
+    }
+  }
 }
